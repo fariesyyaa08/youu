@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Valentine’s</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, "Segoe UI", Helvetica, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      min-height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .card {
+      max-height: 85vh;
+      overflow-y: auto;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2rem;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      max-width: 500px;
+      backdrop-filter: blur(10px);
+      animation: popIn 1s ease;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.25rem;
+      line-height: 1.8;
+    }
+
+    button {
+      margin-top: 1.2rem;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 999px;
+      background: #ff4d6d;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover {
+      background: #ff1f4a;
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 1rem;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .heart {
+      position: absolute;
+  bottom: -10px;
+  color: rgba(255,255,255,0.8);
+  animation: floatUp linear infinite;
+  font-size: 20px;
+  pointer-events: none;
+    }
+
+      .fade-in {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+       opacity: 1;
+       transform: translateY(0);      
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>HELLOOO LOVEEE</h1>
+    <p>
+      ITS WORKING!!<br>
+      Look, there's a button below me..
+      DON'T CLICK IT. TRUST ME.
+    </p>
+
+    <button id="surpriseBtn" onclick="reveal()">Super DUPER danger</button>
+
+    <p id="surprise" class="hidden"></p>
+    <script>
+      const message = `
+      I just wanna say this properly because sometimes I joke around too much and don’t say things clearly,
+      but I care about you, and you’re not alone even when your brain tells you otherwise.
+      Your friends care about you too, and I hope you never forget that you matter to more people than you realize,
+      especially to MEEEE, teehee. Idk what to write anymore, but I’m trying anyway, so bear with me.
+      PLEASE don’t skip meals, okay? Food is important—your brain needs fuel, love.
+      Study well and do your best, I know you’re capable of doing great!!
+      but don’t push yourself until you break. Your mental health comes first, always.
+      Grades are important, yes, but you are more important. And hey, no self-harm, alright? That’s non-negotiable.
+      If something feels too heavy, messy or confusing, come to me—
+      complain, rant, go silent with me, whatever.
+      If things ever get complicated or hard, I’m here, always, even from far away,
+      quietly supporting you and rooting for you as if im your biggest fan.<br>
+      <3
+      `;
+
+
+        let index = 0;
+
+        function reveal() {
+          const surprise = document.getElementById("surprise");
+          surprise.classList.remove("hidden");
+          surprise.classList.add("fade-in");
+
+          document.getElementById("surpriseBtn").remove();
+
+          typeText();
+    }
+
+  function typeText() {
+    const surprise = document.getElementById("surprise");
+
+    if (index < message.length) {
+      surprise.innerHTML += message.charAt(index);
+      index++;
+      setTimeout(typeText, 30);
+     }
+  }
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
+    </p>
+  </div>
+
+</body>
+</html>
