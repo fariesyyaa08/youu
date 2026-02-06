@@ -78,9 +78,11 @@
       position: absolute;
   bottom: -10px;
   color: rgba(255,255,255,0.8);
-  animation: floatUp linear infinite;
   font-size: 20px;
   pointer-events: none;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
     }
 
       .fade-in {
@@ -88,16 +90,16 @@
 }
 
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-       opacity: 1;
-       transform: translateY(0);      
-      }
-    }
+    @keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
   </style>
 </head>
 <body>
@@ -126,7 +128,7 @@
       If something feels too heavy, messy or confusing, come to me—
       complain, rant, go silent with me, whatever.
       If things ever get complicated or hard, I’m here, always, even from far away,
-      quietly supporting you and rooting for you as if im your biggest fan.<br>
+      quietly supporting you and rooting for you as if im your biggest fan.
       <3
       `;
 
@@ -153,15 +155,17 @@
      }
   }
 function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💗";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
-    document.body.appendChild(heart);
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💗";
 
-    setTimeout(() => heart.remove(), 7000);
-  }
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 4) + "s"; // random 4-7s duration
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 7000);
+}
 
   setInterval(createHeart, 300);
 </script>
